@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "Si usa estos datos o este código, cítelos de esta forma."
+title: "Datos y código del artículo Cuello de botella hospitalario en la atención prehospitalaria de la Ciudad de México"
+version: "1.0"
+date-released: 2026-11-17
+license: CC-BY-4.0
+repository-code: "https://github.com/munozemt/tiempos_de_recepcion"
+authors:
+  - family-names: "Muñoz-Carrillo"
+    given-names: "José Manuel"
+    orcid: "https://orcid.org/0009-0009-7055-4926"
+    affiliation: "Escuela de Gobierno y Transformación Pública, Tecnologico de Monterrey"

@@ -1,0 +1,178 @@
+motivo,grupo_detallado,grupo,excluir,registros
+INTENTO DE SUICIDIO POR MEDICAMENTOS,Autolesión por intoxicación,Clinico,0,4495
+CODIGO BLANCO (COVID19),COVID-19,Clinico,0,4926
+CRISIS CONVULSIVA,Crisis convulsiva,Clinico,0,18311
+CONVULSIONES,Crisis convulsiva,Clinico,0,4
+CRISIS CONVULSIVAS,Crisis convulsiva,Clinico,0,1
+ENFERMEDAD,Enfermedad,Clinico,0,186030
+CHECAR ESTADO DE SALUD,Enfermedad,Clinico,0,3471
+ASFIXIA/SOFOCACIÓN,Enfermedad,Clinico,0,2798
+HEMORRAGIA,Enfermedad,Clinico,0,1637
+ATRAGANTAMIENTO,Enfermedad,Clinico,0,723
+CRISIS NERVIOSA,Enfermedad,Clinico,0,319
+ENFERMO,Enfermedad,Clinico,0,33
+ESFUERZO FÍSICO,Enfermedad,Clinico,0,8
+CRISIS DE ANSIEDAD,Enfermedad,Clinico,0,1
+ENFERM,Enfermedad,Clinico,0,1
+EENFERMO,Enfermedad,Clinico,0,1
+EVC,Enfermedad,Clinico,0,1
+INFARTO AGUDO AL MIOCARDIO,Infarto agudo de miocardio,Clinico,0,4777
+IAM,Infarto agudo de miocardio,Clinico,0,1
+INTOXICACIÓN OTROS,Intoxicación,Clinico,0,4773
+INTOXICACIÓN POR MEDICAMENTO,Intoxicación,Clinico,0,736
+INTOXICACIÓN ETILICA,Intoxicación,Clinico,0,579
+INTOXICACIÓN POR SOLVENTES,Intoxicación,Clinico,0,406
+INTOXICACIÓN POR GASES,Intoxicación,Clinico,0,222
+INTOXICACIÓN POR ALIMENTOS,Intoxicación,Clinico,0,185
+INTOXICACIÓN POR CO2,Intoxicación,Clinico,0,39
+INTOXICADO,Intoxicación,Clinico,0,3
+INTOXICADO POR SUSTANCIAS,Intoxicación,Clinico,0,2
+INTOXICACION,Intoxicación,Clinico,0,1
+INTX,Intoxicación,Clinico,0,1
+PICADURA DE ANIMAL,Picadura,Clinico,0,591
+PICADURA,Picadura,Clinico,0,186
+INCONSCIENTE,Pérdida de conciencia,Clinico,0,74865
+INCONCIENTE,Pérdida de conciencia,Clinico,0,15
+INCONSIENTE,Pérdida de conciencia,Clinico,0,2
+INCONCIENYE,Pérdida de conciencia,Clinico,0,1
+GINECO-OBSTÉTRICO,Gineco-obstétrico,Obstetrico,0,4537
+RECIEN NACIDO,Gineco-obstétrico,Obstetrico,0,86
+PARTO,Gineco-obstétrico,Obstetrico,0,5
+OBSTTRICO,Gineco-obstétrico,Obstetrico,0,1
+APOYO MECANICO,Apoyo operativo o administrativo,Otros,1,173
+APOYO DE CÓNDOR,Apoyo operativo o administrativo,Otros,1,122
+SERVICIO ADMINISTRATIVO,Apoyo operativo o administrativo,Otros,1,116
+APOYO MÉDICO,Apoyo operativo o administrativo,Otros,1,112
+VERIFICAR CADÁVER,Apoyo operativo o administrativo,Otros,1,86
+DESCENSO DE PACIENTE,Apoyo operativo o administrativo,Otros,1,53
+ESCOLTA,Apoyo operativo o administrativo,Otros,1,15
+RELEVO DE UNIDAD ERUM,Apoyo operativo o administrativo,Otros,1,13
+Z4,Clave sin definir,Otros,1,3
+INTENTO Z1,Clave sin definir,Otros,1,1
+Z3,Clave sin definir,Otros,1,1
+INT Z1,Clave sin definir,Otros,1,1
+COMISIÓN SOCIAL,Comisión,Otros,1,11731
+COMISIÓN POLÍTICA,Comisión,Otros,1,5312
+COMISIÓN DEPORTIVA,Comisión,Otros,1,5191
+COMISIÓN POLICIACA (OPERATIVOS),Comisión,Otros,1,3537
+COMISIÓN CULTURAL,Comisión,Otros,1,1835
+COMISIÓN RELIGIOSA,Comisión,Otros,1,1370
+COMISIÓN DE CAPACITACIÓN,Comisión,Otros,1,858
+COMISIÓN (PUESTO DE VACUNACIÓN),Comisión,Otros,1,205
+COMISION,Comisión,Otros,1,3
+COMISION DE CAPACITACION,Comisión,Otros,1,1
+COMISIÓN POLITICA,Comisión,Otros,1,1
+FUGA DE GAS,Evento sin condición clínica,Otros,1,511
+DESLIZAMIENTO DE TIERRA,Evento sin condición clínica,Otros,1,172
+SISMO,Evento sin condición clínica,Otros,1,72
+AMENAZA DE BOMBA,Evento sin condición clínica,Otros,1,50
+MENOR ABANDONADO,Evento sin condición clínica,Otros,1,42
+FUGA O DERRAME DE PRODUCTOS QUIMICOS,Evento sin condición clínica,Otros,1,35
+SOCAVÓN,Evento sin condición clínica,Otros,1,31
+FUGA OTROS,Evento sin condición clínica,Otros,1,26
+FALLA DE ENERGÍA ELECTRICA DEL STC METRO,Evento sin condición clínica,Otros,1,16
+INUNDACIÓN,Evento sin condición clínica,Otros,1,12
+FALLA MECÁNICA DEL STC METRO,Evento sin condición clínica,Otros,1,8
+0,Evento sin condición clínica,Otros,1,1
+SE HACE CARGIO UM PARTICULAR,Registro no interpretable,Otros,1,1
+"[TEXTO LIBRE CON DATOS PERSONALES, OMITIDO]",Registro no interpretable,Otros,1,1
+POR SUSMEDIOS -13.08 PM,Registro no interpretable,Otros,1,1
+BÚSQUEDA DE PERSONAS EXTRAVIADAS,Rescate y búsqueda,Otros,1,1070
+ATRAPADO EN ELEVADOR,Rescate y búsqueda,Otros,1,1001
+BUSQUEDA DE PERSONAS EXTRAVIADAS,Rescate y búsqueda,Otros,1,1
+BUSQUEDA DE PERSONAS,Rescate y búsqueda,Otros,1,1
+MENORES ATRAPADOS,Rescate y búsqueda,Otros,1,1
+(vacío),Sin motivo registrado,Otros,1,3
+INTENTO DE SUICIDIO AL TIRARSE AL VACÍO,Autolesión por lesión física,Trauma,0,3040
+INTENTO DE SUICIDIO POR CORTADURAS,Autolesión por lesión física,Trauma,0,2448
+INTENTO DE SUICIDIO POR AHORCAMIENTO,Autolesión por lesión física,Trauma,0,1428
+AHORCAMIENTO/SUSPENSIÓN,Autolesión por lesión física,Trauma,0,188
+INTENTO DE SUICIDIO,Autolesión por lesión física,Trauma,0,6
+INTENTO DE SUICIDIO AL TIRARSE AL VACIO,Autolesión por lesión física,Trauma,0,2
+CAIDA OTROS,Caída,Trauma,0,49138
+CAIDA DESDE SU PLANO DE SUSTENTACIÓN,Caída,Trauma,0,30844
+CAIDA DESDE AZOTEA,Caída,Trauma,0,726
+CAIDA DESDE ESCALERA,Caída,Trauma,0,682
+CAIDA DE ARBOLES,Caída,Trauma,0,556
+CAIDA DESDE ANDAMIO,Caída,Trauma,0,509
+CAIDA DE ESPECTACULARES Y/O MANTAS,Caída,Trauma,0,251
+CAIDA DE PERSONA A BARRANCO,Caída,Trauma,0,213
+CAIDA DESDE PUENTE PEATONAL,Caída,Trauma,0,119
+CAIDA DESDE EDIFICIO,Caída,Trauma,0,118
+CAIDA DESDE JUEGO INFANTIL O MECANICO,Caída,Trauma,0,47
+CAIDA,Caída,Trauma,0,45
+CAIDA DESDE ARBOL,Caída,Trauma,0,43
+CAIDA DESDE CABALLO,Caída,Trauma,0,26
+CAIDA DESDE POSTE,Caída,Trauma,0,17
+CHOQUE ENTRE AUTOS PARTICULARES,Hecho de tránsito,Trauma,0,41236
+CHOQUE OTROS,Hecho de tránsito,Trauma,0,39896
+DERRAPADO,Hecho de tránsito,Trauma,0,30812
+ATROPELLADO OTROS,Hecho de tránsito,Trauma,0,17878
+ATROPELLADO POR AUTO PARTICULAR,Hecho de tránsito,Trauma,0,9677
+VOLCADURA,Hecho de tránsito,Trauma,0,6615
+CAIDA DESDE BICICLETA,Hecho de tránsito,Trauma,0,2855
+CHOQUE DE AMBULANCIA,Hecho de tránsito,Trauma,0,1151
+CHOQUE DE TRANSPORTE PUBLICO,Hecho de tránsito,Trauma,0,1050
+INCENDIO VEHÍCULO,Hecho de tránsito,Trauma,0,263
+CHOQUE DE PATRULLA,Hecho de tránsito,Trauma,0,167
+ATROPELLADO POR STC METRO,Hecho de tránsito,Trauma,0,157
+CAIDA DE VEHÍCULO A BARRANCO,Hecho de tránsito,Trauma,0,131
+ACCIDENTE FERROVIARIO,Hecho de tránsito,Trauma,0,123
+CAIDA DESDE VEHÍCULO EN MOVIMIENTO,Hecho de tránsito,Trauma,0,83
+CAIDA DESDE TRANSPORTE PUBLICO,Hecho de tránsito,Trauma,0,75
+ATROPELLADO POR TRANSPORTE PÚBLICO,Hecho de tránsito,Trauma,0,62
+ATROPELLADO POR MOTOCICLETA,Hecho de tránsito,Trauma,0,41
+CHOQUE AUTOMOVILÍSTICO,Hecho de tránsito,Trauma,0,28
+CHOQUE,Hecho de tránsito,Trauma,0,26
+ATROPELLADO,Hecho de tránsito,Trauma,0,17
+ATROPELLADO POR PATRULLA,Hecho de tránsito,Trauma,0,12
+ATROPELLADO POR AMBULANCIA,Hecho de tránsito,Trauma,0,7
+CICCLISTA CAIDO,Hecho de tránsito,Trauma,0,1
+CICLISTA,Hecho de tránsito,Trauma,0,1
+ATROPELLDO,Hecho de tránsito,Trauma,0,1
+MORDEDURA DE ANIMAL,Mordedura,Trauma,0,3052
+MORDEDURA HUMANA,Mordedura,Trauma,0,11
+MORDEDURA,Mordedura,Trauma,0,1
+GOLPES OTRA CAUSA,Otro traumatismo,Trauma,0,19924
+CORTADURAS,Otro traumatismo,Trauma,0,5454
+GOLPES CONTRA OBJETOS,Otro traumatismo,Trauma,0,5279
+INCENDIO CASA-HABITACIÓN,Otro traumatismo,Trauma,0,2011
+QUEMADURAS,Otro traumatismo,Trauma,0,1182
+INCENDIO OTROS,Otro traumatismo,Trauma,0,985
+ELECTROCUCIÓN,Otro traumatismo,Trauma,0,910
+INCENDIO EDIFICIO,Otro traumatismo,Trauma,0,793
+EXPLOSIÓN OTROS,Otro traumatismo,Trauma,0,728
+INCENDIO BODEGA,Otro traumatismo,Trauma,0,578
+PRENSADO EN MAQUINARIA,Otro traumatismo,Trauma,0,470
+INMERSIÓN,Otro traumatismo,Trauma,0,341
+EMPALAMIENTO,Otro traumatismo,Trauma,0,191
+EXPLOSIÓN DE TANQUE DE GAS,Otro traumatismo,Trauma,0,96
+INCENDIO FABRICA,Otro traumatismo,Trauma,0,85
+EXPLOSIÓN DE MUFA,Otro traumatismo,Trauma,0,71
+COLAPSO DE BARDA,Otro traumatismo,Trauma,0,68
+COLAPSO DE CASA-HABITACIÓN,Otro traumatismo,Trauma,0,52
+MACHACAMIENTO,Otro traumatismo,Trauma,0,51
+APLASTAMIENTO,Otro traumatismo,Trauma,0,48
+COLAPSO DE EDIFICIO,Otro traumatismo,Trauma,0,39
+INCENDIO FORESTAL,Otro traumatismo,Trauma,0,38
+QUEMADURAS OTRA CAUSA,Otro traumatismo,Trauma,0,26
+AMPUTADO,Otro traumatismo,Trauma,0,23
+COMPRESIÓN,Otro traumatismo,Trauma,0,14
+EXPLOSIÓN DE PIPA,Otro traumatismo,Trauma,0,11
+GOLPES OTROS,Otro traumatismo,Trauma,0,4
+GOLPES,Otro traumatismo,Trauma,0,3
+CAIDA ESTRUCTURA,Otro traumatismo,Trauma,0,3
+QUEMADURAS POR PIROTÉCNIA,Otro traumatismo,Trauma,0,2
+LESIONADO,Otro traumatismo,Trauma,0,2
+INCENDIO,Otro traumatismo,Trauma,0,1
+GOLPES POR TERCERAS PERSONAS,Violencia,Trauma,0,19823
+ARMA BLANCA,Violencia,Trauma,0,7516
+ARMA DE FUEGO,Violencia,Trauma,0,6752
+VIOLACION,Violencia,Trauma,0,1431
+VIOLENCIA INTRAFAMILIAR,Violencia,Trauma,0,1411
+LINCHAMIENTO,Violencia,Trauma,0,138
+ATAQUE SEXUAL,Violencia,Trauma,0,71
+SECUESTRO,Violencia,Trauma,0,37
+MALTRATO INFANTIL,Violencia,Trauma,0,4
+GOLPES POR TERCEROS,Violencia,Trauma,0,1
+VIOLENCIA INTRA FAMILIAR,Violencia,Trauma,0,1
