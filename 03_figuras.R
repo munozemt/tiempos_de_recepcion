@@ -12,11 +12,11 @@ guardar <- function(g, nombre, alto) {
 
 F <- B$FLUJO[order(orden)]
 principal <- c("Traslados de ambulancias del ERUM con llegada\nal hospital y destino registrados", "Destino reconocido", "Hora de disponibilidad válida",
-               "Intervalo de 0 a 600 minutos", "Llegada al hospital entre 0 y 600 minutos\ndespués de la llamada", "Alcaldía de origen registrada",
+               "Intervalo de 0 minutos o más", "Llegada al hospital entre 0 y 600 minutos\ndespués de la llamada", "Alcaldía de origen registrada",
                "Sin nueva asignación antes de llegar", "Traslados incluidos en el análisis")
-exclusion <- c(NA, "Destino registrado como R o vacío", "Sin disponibilidad, o disponibilidad\nanterior a la llegada", "Intervalo mayor de 600 minutos",
+exclusion <- c(NA, "Destino registrado como R o vacío", "Sin disponibilidad, o disponibilidad\nanterior a la llegada", "Intervalo negativo",
                "Sin hora de llamada, o llegada fuera\ndel rango de 0 a 600 minutos", "Sin alcaldía de origen", "Unidad asignada a un nuevo servicio\nantes de llegar al hospital",
-               "Motivo administrativo, operativo,\nde búsqueda o sin registro")
+               "Motivo administrativo, de búsqueda\no sin registro interpretable")
 pasos <- F[orden == 0 | excluidas > 0]
 k <- nrow(pasos)
 C <- data.table(i = seq_len(k), orden = pasos$orden)
@@ -40,21 +40,21 @@ guardar(g1, "Figura1_inclusion", 0.9 + 2.25 * k)
 
 TH <- B$TH[fecha_L <= FIN]
 TH[, mes := format(fecha_L, "%Y-%m")]
-M <- merge(TH[, .(mediana = as.numeric(median(R))), by = mes], TH[sector == "SEDESA", .(mediana_sedesa = as.numeric(median(R))), by = mes], by = "mes")
+M <- merge(TH[, .(mediana = as.numeric(median(R))), by = mes], TH[sector == "IMSS-Bienestar", .(mediana_sedesa = as.numeric(median(R))), by = mes], by = "mes")
 D <- B$DIA[, .(activas_mediana = as.numeric(median(activas)), tras_por_amb = round(sum(traslados) / sum(activas), 2)), by = .(mes = format(dia, "%Y-%m"))]
 S <- merge(M, D, by = "mes")[order(mes)]
 fwrite(S, file.path("resultados", "figura2_serie_mensual.csv"), bom = TRUE)
 S[, fecha := as.Date(paste0(mes, "-15"))]
-pA <- rbind(S[, .(fecha, valor = mediana, serie = "Todos los hospitales")], S[, .(fecha, valor = mediana_sedesa, serie = "Hospitales de SEDESA")])
+pA <- rbind(S[, .(fecha, valor = mediana, serie = "Todos los hospitales")], S[, .(fecha, valor = mediana_sedesa, serie = "Hospitales de IMSS-Bienestar")])
 pA[, panel := "A. Mediana del tiempo en hospital (minutos)"]
 P <- rbind(pA, S[, .(fecha, valor = tras_por_amb, serie = "ERUM", panel = "B. Traslados por ambulancia activa en el día")],
            S[, .(fecha, valor = activas_mediana, serie = "ERUM", panel = "C. Ambulancias activas por día (mediana mensual)")])
-P[, `:=`(panel = factor(panel, levels = unique(P$panel)), serie = factor(serie, levels = c("Todos los hospitales", "Hospitales de SEDESA", "ERUM")))]
+P[, `:=`(panel = factor(panel, levels = unique(P$panel)), serie = factor(serie, levels = c("Todos los hospitales", "Hospitales de IMSS-Bienestar", "ERUM")))]
 g2 <- ggplot(P, aes(fecha, valor, linetype = serie, colour = serie)) +
   geom_line(linewidth = 0.45) +
   facet_wrap(~ panel, ncol = 1, scales = "free_y") +
-  scale_colour_manual(values = c("Todos los hospitales" = "black", "Hospitales de SEDESA" = "grey45", "ERUM" = "black"), breaks = c("Todos los hospitales", "Hospitales de SEDESA"), name = NULL) +
-  scale_linetype_manual(values = c("Todos los hospitales" = "solid", "Hospitales de SEDESA" = "22", "ERUM" = "solid"), breaks = c("Todos los hospitales", "Hospitales de SEDESA"), name = NULL) +
+  scale_colour_manual(values = c("Todos los hospitales" = "black", "Hospitales de IMSS-Bienestar" = "grey45", "ERUM" = "black"), breaks = c("Todos los hospitales", "Hospitales de IMSS-Bienestar"), name = NULL) +
+  scale_linetype_manual(values = c("Todos los hospitales" = "solid", "Hospitales de IMSS-Bienestar" = "22", "ERUM" = "solid"), breaks = c("Todos los hospitales", "Hospitales de IMSS-Bienestar"), name = NULL) +
   scale_x_date(date_breaks = "6 months", date_labels = "%m/%Y", expand = expansion(mult = 0.01)) +
   labs(x = NULL, y = NULL) +
   theme_bw(base_size = 8, base_family = "sans") +

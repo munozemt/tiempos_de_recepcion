@@ -11,7 +11,6 @@ if (!file.exists(f_erum) || !file.exists(f_samu)) stop("Faltan los dos archivos 
 if (length(zips) != 5) stop("Faltan los cinco archivos de la DGIS en la carpeta dgis")
 
 UMBRAL <- 30
-TOPE <- 600
 FIN <- as.IDate("2026-09-30")
 sin_acento <- function(x) toupper(chartr("\u00c1\u00c9\u00cd\u00d3\u00da\u00dc\u00d1\u00e1\u00e9\u00ed\u00f3\u00fa\u00fc\u00f1", "AEIOUUNaeiouun", x))
 nrm <- function(x) trimws(gsub("[[:space:]]+", " ", sin_acento(enc2utf8(as.character(x)))))
@@ -29,7 +28,7 @@ E <- leer(f_erum)
 E[, `:=`(fecha_d = as.IDate(substr(fecha, 1, 10)), alc = sin_acento(delegacion))]
 norm_h <- function(h) { h <- trimws(h); fcase(h == "BALBUENA", "GDF BALBUENA", h == "GENERAL LA VILLA", "GDF VILLA",
                                               h == "47 IMSS", "IMSS", h %in% c("R", ""), NA_character_, rep(TRUE, length(h)), h) }
-sector_de <- function(h) fcase(grepl("^GDF ", h), "SEDESA", h == "IMSS", "IMSS", h == "ISSSTE", "ISSSTE", h == "PRIVADO", "Privado",
+sector_de <- function(h) fcase(grepl("^GDF ", h), "IMSS-Bienestar", h == "IMSS", "IMSS", h == "ISSSTE", "ISSSTE", h == "PRIVADO", "Privado",
                                h %in% c("GOB FEDERAL", "MILITAR", "PEMEX", "CAD PASTORA"), "Otro publico", default = "Otro")
 
 TH <- E[tipo_unidad == "AMBULANCIA ERUM" & !is.na(ts_llegada) & !is.na(hospital),
@@ -45,7 +44,7 @@ paso <- function(keep) {
 }
 TH <- paso(!is.na(TH$hosp))
 TH <- paso(!is.na(TH$R))
-TH <- paso(TH$R >= 0 & TH$R <= TOPE)
+TH <- paso(TH$R >= 0)
 TH[, d := (L - sol) / 60]
 TH[!is.na(d) & d < 0 & d + 1440 <= 600, L := L + 86400]
 TH[!is.na(d) & d > 600 & d - 1440 >= 0, L := L - 86400]
@@ -65,7 +64,7 @@ TH[, `:=`(fecha_L = as.IDate(hora_txt(ts_L, "%Y-%m-%d")), hora_L = as.integer(ho
 TH[, anio := as.integer(substr(as.character(fecha_L), 1, 4))]
 TUR <- E[tipo_unidad == "AMBULANCIA ERUM" & !is.na(turno) & !is.na(unidad), .(turno = as.character(turno)[1]), by = .(unidad, id_servicio)]
 TH <- merge(TH, TUR, by = c("unidad", "id_servicio"), all.x = TRUE)
-if (nrow(TH) != 59628L || round(sum(TH$exceso_h)) != 33307) stop("La muestra no coincide con la del articulo (59,628 traslados y 33,307 horas de exceso)")
+if (nrow(TH) != 59639L || round(sum(TH$exceso_h)) != 33420) stop("La muestra no coincide con la del articulo (59,639 traslados y 33,420 horas de exceso)")
 
 CV <- E[tipo_unidad == "AMBULANCIA ERUM" & !is.na(ts_llegada) & !is.na(hospital)][!duplicated(paste(unidad, id_servicio))]
 CV[, anio := as.integer(format(ts_llegada, "%Y", tz = "UTC"))]
@@ -79,12 +78,12 @@ DIA[, `:=`(anio = year(dia), tras_por_amb = traslados / activas)]
 rm(E, A, CV, SV, TUR); invisible(gc(verbose = FALSE))
 
 S <- leer(f_samu)
-S5 <- S[!is.na(int_estancia_hosp1) & !is.na(ts_arribo_hosp1) & int_estancia_hosp1 >= 0 & int_estancia_hosp1 <= TOPE,
+S5 <- S[!is.na(int_estancia_hosp1) & !is.na(ts_arribo_hosp1) & int_estancia_hosp1 >= 0,
         .(tipo_dependencia, hosp2 = !is.na(ts_arribo_hosp2), R = int_estancia_hosp1, ts_L = ts_arribo_hosp1)]
 S5[, fecha_L := as.IDate(hora_txt(ts_L, "%Y-%m-%d"))]
 S5[, anio := as.integer(substr(as.character(fecha_L), 1, 4))]
 S10 <- S[tipo_dependencia == "SAMU-CRUM" & !is.na(ts_arribo_hosp1) & !is.na(fecha)]
-S10 <- S10[, .(reg = as.integer(!is.na(int_estancia_hosp1) & int_estancia_hosp1 >= 0 & int_estancia_hosp1 <= 600),
+S10 <- S10[, .(reg = as.integer(!is.na(int_estancia_hosp1) & int_estancia_hosp1 >= 0),
                anio = year(as.IDate(fecha)), hora = as.integer(hora_txt(ts_arribo_hosp1, "%H")), hosp2 = as.integer(!is.na(ts_arribo_hosp2)),
                turno = as.character(turno), destino_reg = as.integer(!is.na(destino) & destino != "OTRO"),
                ambas = as.integer(!is.na(ts_salida_hosp1) & !is.na(ts_disponible)), igual = as.integer(!is.na(ts_salida_hosp1) & !is.na(ts_disponible) & ts_salida_hosp1 == ts_disponible),

@@ -93,12 +93,12 @@ for (aj in c(FALSE, TRUE)) {
                            inf = round(apply(bb[2:3, , drop = FALSE], 1, q, .025), 1), sup = round(apply(bb[2:3, , drop = FALSE], 1, q, .975), 1))
 }
 rm(boots)
-TS <- TT[sector == "SEDESA"][, hosp_f := droplevels(hosp_f)]
+TS <- TT[sector == "IMSS-Bienestar"][, hosp_f := droplevels(hosp_f)]
 boots <- remuestreos(TS, 20261117)
 for (aj in c(FALSE, TRUE)) {
   f <- if (aj) R ~ t + mes_anio + hosp_f + motivo_f else R ~ t + mes_anio + hosp_f
   bb <- vapply(boots, function(ii) { d <- TS[ii]; d[, hosp_f := droplevels(hosp_f)]; rq_c(f, d, "t") }, 0)
-  FM[[length(FM) + 1]] <- c(list(muestra = "Hospitales de SEDESA", medida = "Mediana, minutos por anio", ajuste_motivo = aj), ic_rq(rq_c(f, TS, "t"), bb))
+  FM[[length(FM) + 1]] <- c(list(muestra = "Hospitales de IMSS-Bienestar", medida = "Mediana, minutos por anio", ajuste_motivo = aj), ic_rq(rq_c(f, TS, "t"), bb))
 }
 guardar(rbindlist(FM), "suplemento_F2_tendencia_con_ajuste_por_motivo.csv")
 guardar(CM, "suplemento_F4_diferencia_por_motivo.csv")
@@ -106,18 +106,18 @@ rm(boots, TS, bb)
 
 T3 <- merge(TT, DIA[, .(fecha_L = dia, tras_por_amb)], by = "fecha_L", all.x = TRUE)
 boots <- remuestreos(T3, 20261109)
-F1 <- rbindlist(lapply(c("SEDESA", "IMSS", "ISSSTE", "Privado"), function(s) {
+F1 <- rbindlist(lapply(c("IMSS-Bienestar", "IMSS", "ISSSTE", "Privado"), function(s) {
   ds <- T3[sector == s]
   bb <- vapply(boots, function(ii) rq_c(R ~ t + mes_anio, T3[ii[T3$sector[ii] == s]], "t"), 0)
   m <- ic_rq(rq_c(R ~ t + mes_anio, ds, "t"), bb); p <- ic_lm(lm_cl(mas30 ~ t + mes_anio, ds, "t"))
   data.table(sector = s, traslados = nrow(ds), mediana_min_por_anio = m$est, mediana_inf = m$inf, mediana_sup = m$sup,
              mas30_puntos_por_anio = p$est, mas30_inf = p$inf, mas30_sup = p$sup)
 }))
-F2 <- T3[sector %in% c("SEDESA", "IMSS", "ISSSTE", "Privado"), .(traslados = .N, mediana = as.numeric(median(R)), pct_mas_30 = pct(mean(mas30))), by = .(sector, anio)][order(sector, anio)]
+F2 <- T3[sector %in% c("IMSS-Bienestar", "IMSS", "ISSSTE", "Privado"), .(traslados = .N, mediana = as.numeric(median(R)), pct_mas_30 = pct(mean(mas30))), by = .(sector, anio)][order(sector, anio)]
 guardar(F2, "tabla_III_institucion_por_anio.csv")
 guardar(F1, "tabla_III_cambio_anual_por_institucion.csv")
-dd <- vapply(boots, function(ii) descomp(T3[ii][sector == "SEDESA"]), c(total = 0, mezcla = 0, dentro = 0))
-guardar(tabla_descomp(descomp(T3[sector == "SEDESA"]), dd), "texto_descomposicion_sedesa_2022_2026.csv")
+dd <- vapply(boots, function(ii) descomp(T3[ii][sector == "IMSS-Bienestar"]), c(total = 0, mezcla = 0, dentro = 0))
+guardar(tabla_descomp(descomp(T3[sector == "IMSS-Bienestar"]), dd), "texto_descomposicion_imss_bienestar_2022_2026.csv")
 rm(boots, dd)
 T4 <- T3[!is.na(tras_por_amb)]
 T4[, sector_f := factor(sector)]
@@ -138,7 +138,7 @@ rm(boots, T3, T4)
 
 agg <- function(X, etiqueta) X[, c(list(grupo = etiqueta, unidades = .N), lapply(.SD, sum, na.rm = TRUE)), by = anio,
                                .SDcols = c("camas_hosp", "camas_urg", "urgenciologos", "medicos", "enfermeras_contacto")]
-D4 <- rbind(agg(SED[coincidencias == 1L], "SEDESA, hospitales de la bitacora enlazados con la DGIS"),
+D4 <- rbind(agg(SED[coincidencias == 1L], "IMSS-Bienestar, hospitales de la bitacora enlazados con la DGIS"),
             agg(HOSP[institucion == "IMSS"], "IMSS, Ciudad de Mexico"), agg(HOSP[institucion == "ISSSTE"], "ISSSTE, Ciudad de Mexico"))[order(grupo, anio)]
 guardar(D4, "tabla_IV_recursos_dgis.csv")
 DX <- merge(DIA, TH[fecha_L <= FIN, .(exceso_h = sum(exceso_h)), by = .(dia = fecha_L)], by = "dia", all.x = TRUE)
@@ -163,7 +163,7 @@ VAR <- list(
   "V4 Sin la llegada posterior al 30 de septiembre de 2026" = TT$fecha_L <= FIN,
   "V5 Sin 2022" = TT$anio >= 2023,
   "V6 Solo enero a septiembre de cada anio" = TT$mes <= 9 & TT$fecha_L <= FIN,
-  "V7 Hospitales de SEDESA con 1,000 traslados o mas" = TT$hosp %in% TOP,
+  "V7 Hospitales de IMSS-Bienestar con 1,000 traslados o mas" = TT$hosp %in% TOP,
   "V8 Desde junio de 2022" = TT$fecha_L >= as.IDate("2022-06-01"),
   "V9 Intervalos de 10 minutos o mas" = TT$R >= 10)
 tendencias <- function(d) {

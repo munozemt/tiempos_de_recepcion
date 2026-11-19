@@ -2,7 +2,7 @@ DATOS Y CÓDIGO DEL ARTÍCULO
 Cuello de botella hospitalario en la atención prehospitalaria de la Ciudad de México
 
 Autor. José Manuel Muñoz-Carrillo, Escuela de Gobierno y Transformación Pública, Tecnologico de Monterrey. ORCID 0009-0009-7055-4926.
-Versión del depósito. 1.0, noviembre de 2026.
+Versión del depósito. 1.1, noviembre de 2026.
 Depósito. https://github.com/munozemt/tiempos_de_recepcion
 Licencia. Creative Commons Atribución 4.0 Internacional (CC BY 4.0). Ver la sección 8.
 
@@ -64,7 +64,7 @@ Si los archivos cambiaron, solo pueden cambiar las cifras de recursos de la Tabl
 
 4. REQUISITOS
 
-R 4.3 o posterior. El análisis del artículo se corrió con R 4.6.1.
+R 4.3 o posterior. Las cifras de la versión 1.1 del artículo se obtuvieron con R 4.3.3.
 Paquetes data.table, R.utils, quantreg y ggplot2.
 
 install.packages(c("data.table", "R.utils", "quantreg", "ggplot2"))
@@ -90,7 +90,7 @@ source("01_preparacion.R")
 source("02_analisis.R")
 source("03_figuras.R")
 
-01_preparacion.R reconstruye la muestra de 59,628 traslados y se detiene si no la obtiene. Tarda menos de un minuto.
+01_preparacion.R reconstruye la muestra de 59,639 traslados y se detiene si no la obtiene. Tarda menos de un minuto.
 02_analisis.R estima todos los modelos. Los intervalos de confianza de la mediana usan 200 remuestreos de días con semillas fijas, así que reproducen los del artículo. Tarda de 10 a 25 minutos según el equipo.
 03_figuras.R produce las dos figuras. Tarda menos de un minuto.
 
@@ -108,7 +108,7 @@ resultados/tabla_III_cambio_anual_por_institucion.csv         Tabla III, cambio 
 resultados/tabla_IV_recursos_dgis.csv                         Tabla IV, recursos de la DGIS
 resultados/tabla_IV_carga_erum_y_suplemento_C3.csv            Tabla IV, carga del ERUM, y Tabla C3 del suplemento
 resultados/tabla_V_robustez.csv                               Tabla V
-resultados/texto_descomposicion_sedesa_2022_2026.csv          descomposición en hospitales de SEDESA, en Resultados
+resultados/texto_descomposicion_imss_bienestar_2022_2026.csv  descomposición en hospitales de IMSS-Bienestar, en Resultados
 resultados/texto_carga_del_mismo_dia.csv                      modelo de carga del mismo día, en Resultados
 resultados/suplemento_A1_samu_registro_salida.csv             Tabla A1 del suplemento
 resultados/suplemento_A2_samu_con_y_sin_salida.csv            Tabla A2 del suplemento
@@ -140,8 +140,8 @@ La Tabla B1 del suplemento (reglas de limpieza) no se reproduce, porque se calcu
 Tiempo en hospital. Minutos desde la llegada al hospital (ts_llegada) hasta que la unidad queda disponible (ts_salida), en la columna int_llegada_salida.
 Horas de exceso. Suma de los minutos de cada intervalo por encima de 30, divididos entre 60.
 Ambulancia activa. Unidad de tipo AMBULANCIA ERUM con al menos un registro en el día.
-Sector. SEDESA si el destino empieza con GDF, y IMSS, ISSSTE, Privado u Otro público según la institución registrada.
-Grupo de motivo. Trauma, Clinico u Obstetrico según catalogo_motivos_erum.csv. Los traslados del grupo Otros (motivo administrativo, operativo, de búsqueda o sin registro interpretable) se excluyen de la muestra.
+Sector. IMSS-Bienestar si el destino empieza con GDF, y IMSS, ISSSTE, Privado u Otro público según la institución registrada. La bitácora registra con el prefijo GDF a los hospitales de la Secretaría de Salud de la Ciudad de México, que pasaron a IMSS-Bienestar en 2024.
+Grupo de motivo. Trauma, Clinico u Obstetrico según catalogo_motivos_erum.csv. Los traslados del grupo Otros (motivo administrativo, de búsqueda o sin registro interpretable) se excluyen de la muestra.
 
 
 8. LICENCIA Y CITA
@@ -154,3 +154,10 @@ Cita sugerida.
 Muñoz-Carrillo JM. Datos y código del artículo Cuello de botella hospitalario en la atención prehospitalaria de la Ciudad de México. Versión 1.0. 2026. Disponible en https://github.com/munozemt/tiempos_de_recepcion
 
 Cuando el artículo se publique, se agregará aquí su referencia, que deberá citarse junto con el depósito.
+
+
+9. CAMBIOS RESPECTO DE LA VERSIÓN 1.0
+
+El intento de suicidio por medicamentos pasó del grupo Clinico al grupo Trauma, con lo que todos los intentos de suicidio quedan en Trauma. Cambia la columna grupo_motivo de 4,495 registros y la fila correspondiente de catalogo_motivos_erum.csv.
+Se eliminó el límite superior de 600 minutos al tiempo en hospital, en el ERUM y en el SAMU-CRUM, porque una ambulancia puede quedar retenida durante horas. La muestra pasó de 59,628 a 59,639 traslados.
+El sector de los hospitales con prefijo GDF se llama ahora IMSS-Bienestar.
