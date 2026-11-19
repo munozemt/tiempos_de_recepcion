@@ -64,7 +64,7 @@ Si los archivos cambiaron, solo pueden cambiar las cifras de recursos de la Tabl
 
 4. REQUISITOS
 
-R 4.3 o posterior. Las cifras de la versión 1.1 del artículo se obtuvieron con R 4.3.3.
+R 4.3 o posterior. Las cifras del artículo se obtuvieron con R 4.6.1, y una corrida con R 4.3.3 produjo los mismos 29 archivos de resultados, idénticos byte por byte.
 Paquetes data.table, R.utils, quantreg y ggplot2.
 
 install.packages(c("data.table", "R.utils", "quantreg", "ggplot2"))
